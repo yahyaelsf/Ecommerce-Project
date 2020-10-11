@@ -1,0 +1,40 @@
+
+
+php artisan make:request loginRequest 
+
+namespace App\Http\Requests;
+هادة بدل ما اسوي الفليديشن جوا الفنكشن الي بالكنترولر بعمل الامر هادة وبصير اتحقق من الركويست الي جاي عن طريقو 
+  public function rules()
+    {
+        return [
+            'email'=>'required|email',
+            'password'=> 'required',
+        ];
+هنا بحط التحقق تبعي وللحقولي الي بدي اتحثقق منها 
+    }
+ public function messages()
+    {
+        return [
+            'email.required'=>'البريد الإلكتروني مطلوب',
+            'email.email'=>'أدخل عنوان البريد الإلكتروني صالح',
+            'password.required'=> 'كلمة المرور مطلوبة',
+        ];
+  هنا برجع المسجات الي رح تطلع لما يصير خطا بالتحقق
+    }
+بعدين جوا الكنترولر 
+use App\Http\Requests\loginRequest;
+public function login(loginRequest  $request)
+    {
+        
+}
+هلقيت انا لما بدي اعمل تسجيل دخول للادمن بنعش اسويلو تسجيل عام بعمل حساب رئيسي للادمن ومن جوا لوحة التحكم بعمل اعدادات اضافة مسؤول والصلاحيات تبعتو 
+ 
+كيف اعمل الحساب الرئيسي للادمن عن طريق التنكر 
+php artisan tinker
+وهيك بعبي البيانات 
+$admin = new App\Admin();
+$admin->name = 'yahya';
+$admin->email = 'yahya@gmail.com';
+$admin->password = bcrypt('yahya123');
+$admin->save();
+بنسخهم هيك بالكوماندلاين 
